@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Number Guessing Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Number Guessing Game</h1>
+            <p class="subtitle">Guess the number between {{ min_num }} and {{ max_num }}</p>
+        </header>
+
+        <div class="game-stats">
+            <div class="stat">
+                <span class="stat-label">Attempts</span>
+                <span class="stat-value" id="attempts">0 / {{ max_attempts }}</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Range</span>
+                <span class="stat-value" id="range-display">{{ min_num }} - {{ max_num }}</span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="guess-section">
+                <div class="input-group">
+                    <input type="number" id="guess-input" 
+                           min="{{ min_num }}" max="{{ max_num }}" 
+                           placeholder="Enter your guess...">
+                    <button id="guess-btn" class="btn btn-primary">Guess!</button>
+                </div>
+                <div id="message" class="message"></div>
+                <div id="hint" class="hint"></div>
+            </div>
+
+            <div class="history-section">
+                <h3>📋 Guess History</h3>
+                <div id="history-list" class="history-list">
+                    <p class="empty-history">No guesses yet. Start playing!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="reset-btn" class="btn btn-secondary">🔄 New Game</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
